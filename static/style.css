@@ -1,0 +1,218 @@
+:root {
+  --bg-color: #0d0d12;
+  --card-bg: rgba(255, 255, 255, 0.05);
+  --card-border: rgba(255, 255, 255, 0.1);
+  --primary-color: #6366f1;
+  --primary-glow: rgba(99, 102, 241, 0.4);
+  --text-color: #ffffff;
+  --text-secondary: #a1a1aa;
+  --accent-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  user-select: none; /* Prevent text selection on touch */
+  -webkit-user-select: none;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: "Outfit", sans-serif;
+  height: 100vh;
+  overflow: hidden; /* Prevent scrolling */
+  display: flex;
+  justify-content: center;
+}
+
+.app-container {
+  width: 100%;
+  max-width: 600px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  gap: 20px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+}
+
+header h1 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.status-indicator {
+  width: 10px;
+  height: 10px;
+  background-color: #22c55e;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #22c55e;
+}
+
+/* Common Card Style */
+section {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 24px;
+  padding: 20px;
+  backdrop-filter: blur(10px);
+}
+
+/* Media Controls */
+.media-controls .row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn-icon {
+  background: none;
+  border: none;
+  color: var(--text-color);
+  font-size: 2rem;
+  padding: 15px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-icon:active {
+  transform: scale(0.9);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.main-play {
+  font-size: 3rem;
+  background: var(--accent-gradient);
+  box-shadow: 0 4px 20px var(--primary-glow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+}
+
+.main-play:active {
+  transform: scale(0.95);
+  box-shadow: 0 2px 10px var(--primary-glow);
+}
+
+/* Volume */
+.volume-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.volume-controls .row {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: var(--text-secondary);
+}
+
+input[type="range"] {
+  flex-grow: 1;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.btn-block {
+  width: 100%;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  color: var(--text-color);
+  font-size: 1rem;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.btn-block:active {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Trackpad */
+.trackpad-area {
+  flex-grow: 1; /* Take remaining space */
+  position: relative;
+  touch-action: none; /* Critical for handling touches via JS */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--primary-color);
+  background: rgba(99, 102, 241, 0.05);
+}
+
+.trackpad-hint {
+  color: var(--primary-color);
+  opacity: 0.5;
+  font-weight: 500;
+  pointer-events: none;
+}
+
+/* Mouse Buttons */
+.mouse-buttons {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  background: none;
+  border: none;
+  backdrop-filter: none;
+}
+
+.btn-mouse {
+  flex: 1;
+  height: 60px;
+  border: none;
+  border-radius: 16px;
+  background: var(--card-bg);
+  color: var(--text-color);
+  font-size: 1.2rem;
+  font-weight: 600;
+  border: 1px solid var(--card-border);
+}
+
+.btn-mouse:active {
+  background: var(--primary-color);
+  box-shadow: 0 0 15px var(--primary-glow);
+}
+
+.btn-mouse.center {
+  flex: 0.5;
+  font-size: 1rem;
+}

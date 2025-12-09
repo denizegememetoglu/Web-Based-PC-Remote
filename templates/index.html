@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>PC Remote</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <!-- Phosphor Icons for nice UI icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  </head>
+  <body>
+    <div class="app-container">
+      <header>
+        <h1><i class="ph ph-desktop"></i> PC Remote</h1>
+        <div id="connection-status" class="status-indicator"></div>
+      </header>
+
+      <section class="media-controls">
+        <div class="row">
+          <button class="btn-icon" onclick="sendMedia('prev')">
+            <i class="ph ph-skip-back-circle"></i>
+          </button>
+          <button class="btn-icon main-play" onclick="sendMedia('playpause')">
+            <i class="ph ph-play-pause"></i>
+          </button>
+          <button class="btn-icon" onclick="sendMedia('next')">
+            <i class="ph ph-skip-forward-circle"></i>
+          </button>
+        </div>
+      </section>
+
+      <section class="volume-controls">
+        <div class="row">
+          <i class="ph ph-speaker-low"></i>
+          <input
+            type="range"
+            id="volume-slider"
+            min="0"
+            max="100"
+            value="50"
+            oninput="updateVolume(this.value)"
+          />
+          <i class="ph ph-speaker-high"></i>
+        </div>
+        <button class="btn-block" onclick="toggleMute()">
+          <i class="ph ph-speaker-slash"></i> Mute System
+        </button>
+      </section>
+
+      <section class="trackpad-area" id="trackpad">
+        <div class="trackpad-hint">Touch Area</div>
+      </section>
+
+      <section class="mouse-buttons">
+        <button class="btn-mouse left" onmousedown="sendClick('left')">
+          L
+        </button>
+        <button class="btn-mouse center" onclick="sendScroll(1)">▲</button>
+        <button class="btn-mouse center" onclick="sendScroll(-1)">▼</button>
+        <button class="btn-mouse right" onmousedown="sendClick('right')">
+          R
+        </button>
+      </section>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+  </body>
+</html>
